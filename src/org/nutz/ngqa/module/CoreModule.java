@@ -44,7 +44,7 @@ public class CoreModule {
 	@At("/ask")
 	@AdaptBy(type=JsonAdaptor.class) //将输入流以Json格式读取,生成参数表
 	public AjaxReturn createQuestion(final @Param("..")Question question, @Attr("me") User user) {
-		if (question == null || Lang.length(question.getTitle()) < 5 || Lang.length(question.getTitle()) > 100)
+		if (question == null || Lang.length(question.getTitle()) < 5 || Lang.length(question.getTitle()) > 140)
 			return Ajax.fail().setMsg("Not OK");
 		question.setUser(user);
 		question.setCreatedAt(new Date());

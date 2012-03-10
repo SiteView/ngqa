@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" media="screen" href="${base}/css/include/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="${base}/css/login.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="${base}/css/application.css" />
-<script type="text/javascript" src="${base}/js/include/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="${base}/js/include/ICanHaz.min.js"></script>
-<script type="text/javascript" src="${base}/js/application.js"></script>
-<script type="text/javascript" src="${base}/js/tag.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/include/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../css/login.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../css/application.css" />
+<script type="text/javascript" src="../js/include/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/include/ICanHaz.min.js"></script>
+<script type="text/javascript" src="../js/application.js"></script>
+<script type="text/javascript" src="../js/tag.js"></script>
 <title>Question</title>
 </head>
 <body>

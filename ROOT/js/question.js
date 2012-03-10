@@ -83,9 +83,54 @@ $(function() {
                 tags: getTagsHTML(relativePath, data['tags']),
                 imgUrl: String.format(gravatarUrl, data['user']['email'])
             };
-            if (user && data['user']['id'] == user['id']) {
-                $("#question").after($('<div class="form-actions" id="edit-question"><button type="submit" class="btn" id="add-answer">Edit</button></div>'));
+            if (user) {
+                $("#answer").append($('<div class="span8 box sep21">\
+                    <form class="well" id="answer-form" >\
+                    <legend>Answer your answer</legend>\
+                        <label>Content</label>\
+                        <textarea class="input-xxlarge" id="content" name="content" rows="10" placeholder="content"></textarea>\
+                        <label for="format">Format</label>\
+                        <select id="format" name="format">\
+                            <option selected="selected" value="txt">Plain Text</option>\
+                            <option value="markdown">Markdown</option>\
+                        </select>\
+                        <br />\
+                        <button type="button" class="btn" id="add-answer">Submit</button>\
+                    </form>\
+                </div>'));
+                $("#add-answer").bind('click',
+                    function(){
+                        if (!$.trim($("#content").val())) {
+                            alert("You will input content.");
+                            $("#content").focus();
+                            return;
+                        }
+                        $.ajax({
+                            type : 'POST',
+                            url  : "../question/"+data['id']+"/answer/add",
+                            data :  $.toJSON(form2js("answer-form")),
+                            dataType : 'json',
+                            success: function( data ) {
+                                if (console && console.log){
+                                      console.log( 'Sample of data:', $.toJSON(data) );
+                                }
+                                if (data['ok']) { //添加成功
+                                    $("#content").val("");
+                                    $("#format").val("txt");
+                                    window.location.reload();
+                                } else {
+                                    alert('Fail ' + data['msg']);
+                                }
+                            }
+                        });
+                    }
+                );
+
+                if (data['user']['id'] == user['id']) {
+                    $("#question").after($('<div class="form-actions" id="edit-question"><button type="submit" class="btn" id="add-answer">Edit</button></div>'));
+                }
             }
+
             $("#question").append(ich.question(questionInfo));
 
             if (data['answers'].length != 0) {

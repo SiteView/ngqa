@@ -13,39 +13,7 @@
 <script type="text/javascript" src="./js/include/form2js.js"></script>
 <script type="text/javascript" src="./js/include/jquery.pjax.js"></script>
 <script type="text/javascript" src="./js/application.js"></script>
-<script type="text/javascript">
-$(function() {
-    $("#infos div:first-child").attr('class', 'box');
-    var relativePath = '.';
-    loginHTML(relativePath);
-    signinHTML(relativePath);
-    $("#ask").click(function() {
-        var formData = form2js("ask-form");
-        var tags = [];
-        if (formData.tags) {
-            $.each(formData.tags.split(','), function (index, value) {
-                value = $.trim(value);
-                if (value) {
-                    tags.push(value);
-                }
-            });
-            formData.tags = tags;
-        }
-
-        $.post('./ask', $.toJSON(formData), function (data) {
-            if (console && console.log){
-                console.log( 'Sample of data:', $.toJSON(data) );
-            }
-            if (data['ok']) { //添加成功
-                var nextURL = "./question/" + data['data']['id'];
-                window.location = nextURL;
-            } else {
-                alert('Fail ' + data['msg']);
-            }
-        }, 'json');
-    });
-});
-</script>
+<script type="text/javascript" src="./js/ask.js"></script>
 <title>Ask</title>
 </head>
 <body>
